@@ -135,7 +135,10 @@ class ProductController extends Controller
         ];
         $this->writeChangelog($action = 'delete', $new_payload);
 
-        return response()->json('true', ResponseAlias::HTTP_OK);
+        return response()->json([
+            'success' => true,
+            'message' => 'Product successfully deleted',
+        ], ResponseAlias::HTTP_OK);
     }
 
     /**
