@@ -1,0 +1,44 @@
+Tech Stack
+===========
+	1. Laravel 9
+	2. PHP 8.1 - alpine
+	3. Docker
+	4. MySQL
+	5. MongoDB
+	6. MailTrap.io (for test mails)
+	7. Postman
+
+Requirements
+===========
+	1. Docker
+	2. MongoDB tool(Mongo Compass or NaviCat)
+	3. Postman Tool
+
+Additional Resources
+===================
+	1. MailTrap added to test mail. (skip the email body.)(screenshot provided)
+	2. All the working screenshots have been attached(under "docs" folder). 
+	3. postman collection added. (Filename  "postman_collection.json" under "docs" folder)
+
+
+Improvements can implement
+=======================
+	1. Can merge "Index()" method and "Search()" method into one function("index()"). Written separately for more understanding
+	2. Can written code in "try{}catch{}" or "Transection mode" for better error handling. For this, it will be overkill, so it skipped.
+	3. we can use "readme.MD" for documentation. 
+
+Followed
+=======
+	1. Well-commented code
+	2. Return type and PHPDoc added. (We know what we get as output).
+	3. SOLID pattern followed. 
+	4. Consistency responses(API returns) are added all over the system.
+
+Setup Instructions
+=================
+	1. Install Docker with necessary configs(Ex: if Windows WSL2)
+	2. clone the project and go to the root folder
+	3. RUN "docker-compose build" and then "docker-compose up"
+	4. open another terminal and RUN "docker exec -it dtl_app bash" && then RUN "composer install"
+	5. hit "http://localhost:8092/", and you will see the Laravel home page
+	6. Open postman and import the postman collection in the root(under the "docs" folder)

@@ -1,0 +1,46 @@
+Tables
+*soft-deletes
+
+App
+*API's
+* JSON format
+
+1. table with relationships
+
+	prodcuts
+	 - name
+	 - price
+	 - status
+	 - who added(created by)
+	 - product 	type
+	 - soft-deletes
+
+	Users(default)
+	 - name
+	 - email
+
+	product type
+	 - type
+
+2. assume changelog - mongoDB using old values
+
+3. product CURD
+	- create
+	- update
+	- show
+	- delete
+	- index
+
+
+4. product serach
+	- product name
+	- who added
+
+5. send email to created by
+ - (no configs/just dummy blade)
+
+6. default seeder
+	- 1 user
+	- 1 product
+
+
