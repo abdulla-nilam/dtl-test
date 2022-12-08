@@ -1,0 +1,385 @@
+{
+	"info": {
+		"_postman_id": "6b42f520-3c61-48a1-b3af-df8f75b67a2f",
+		"name": "DTL Test Ab",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7053298"
+	},
+	"item": [
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "With {name} only",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8092/api/search?name=sam",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "sam"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "With {name} and {type}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8092/api/search?name=sam&type=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "sam"
+								},
+								{
+									"key": "type",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "If merge it to index() method - Fetch all without params",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8092/api/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Index",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en-GB;q=0.9,en;q=0.8"
+					},
+					{
+						"key": "Auth-Id",
+						"value": "null"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Cookie",
+						"value": "laravel_session=eyJpdiI6IjRMU2l2ZFJrTm1nN055MlpJaWlIM1E9PSIsInZhbHVlIjoiNlBoa3ZYaGlYalJOTGFJRlZlY3VuTVlBNjRJWTY2VXJ4dVpLT0RwSkUwUGxMOUZtSkQveWRxdHJVcVpDc2ZXbCIsIm1hYyI6IjFkMmIzY2JhN2Q1ZmQ3OTk0NGZiZTE2YThiNWM3ODVlM2M3YmZkN2VlYmMwMDg5OWI4YWRjM2YyNDMxODJjYmMifQ%3D%3D; laravel_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjViZGFjYTA0M2MyOWNjNzJjNzhiYzk0MDlmZDQ4OTcxOTQ0ZThiYmU1ZmVkMzg3YzE5OGY0ZTg5ZDIwYTIwN2UwOGI3NWMzZTg4Y2UzMWRmIn0.eyJhdWQiOiIxIiwianRpIjoiNWJkYWNhMDQzYzI5Y2M3MmM3OGJjOTQwOWZkNDg5NzE5NDRlOGJiZTVmZWQzODdjMTk4ZjRlODlkMjBhMjA3ZTA4Yjc1YzNlODhjZTMxZGYiLCJpYXQiOjE2NTgyMDkwNjksIm5iZiI6MTY1ODIwOTA2OSwiZXhwIjoxNjU4ODEzODY3LCJzdWIiOiIxIiwic2NvcGVzIjpbInNhcCIsImN1cCIsInJsIiwiaHJtcyIsInRycCIsImFkcCIsIm9yZGVycyIsIk9SLUxJIiwiT1ItQ1IiLCJPUi1TSCIsIk9SLVVQIiwiQVAtTEkiLCJBUC1DUiIsIkFQLVNIIiwiQVAtVVAiLCJBUC1ERSIsIlJFIiwiREUtQVAiLCJjb21wYW5pZXMiLCJDTS1DUiIsIkNNLUxJIiwiQ00tU0giLCJDTS1VUCIsIkNNLURFIiwiQ04tQ1IiLCJDTi1MSSIsIkNOLVNIIiwiQ04tVVAiLCJDTi1VTCIsImNvbmZpZ3VyYXRpb24iLCJXMSIsIlcyIiwiVzMiLCJMVi1SRSIsIkxWLUFQIiwiTFYtTUciLCJMVi1EQiIsIkVNLVJFIiwiRU0tQ1IiLCJFTS1VUCIsIkVNLURFIiwiSk8tUkUiXSwicmwiOjE3MTI2LCJyb2xlIjoiU1VQRVIgQURNSU4ifQ.LXkyk99jnOAD-k4EcU9m3CT7YBy3o9IcSFCB2QIuO7h9bGPRJcpWnIHfxEn6NeKMMamauIB2dka837RW4JsW4T3PXLKK1dK_v0RvVtq0VGIsvKJ6hOEl6HxVm2zKqHPmLY7fO9qhF5QXfTsmH59_eONEZRTB6oAlRxZ9kihS7mhQ4ZExydWzfyL4LNHQX0HjDVWZM_ZyhBOhqDEFwDHJii4jLY35PQWgDubrqRMS8KQMGm5Re4AEy-BhsuGkJqnbjAdvhNhRUaWBMVDwZANLmFbfQdBM4Drj6omquDJ3nXY4TyxBr2FDISZQku4PyWUTj03XqLqyRh09tQcYeGt5N5HG2OHQ00XgqTIfJQAKgJyaANHHr3hazEBpH26V-769RfLbIZCYgG2GMrkw_LX1uqTcxqJFFdUzkP7epTYGxhB8QxMiSXhFK9Ln8MtUIv7TiyVupYTR7mDbFNg2raSJKbCzSIkRBWS1QzjQuS9VKuTXmPD0q0qlAeQKR47eXgcotFrDJ9A5U_2hEOvol6ZkgCZ_u-CRfB1Ryc0kWZP0fhG_SrnPbGeidysXC8ug016dFYntyzHl4NJ24yzO9CrvQznlCYo5l53Yutu97fljylxzPEBhgFkhwBkeuxYn6HXKY5Fp1Eq9BCvk4TduR_1ezGFg5usDfXXwCxjYQZna0WA; XSRF-TOKEN=eyJpdiI6IlJVaXd3ZUxvK2d6aXVINlorNlJMZXc9PSIsInZhbHVlIjoiN09cL0hEbkZ2Y2p4YVljRU5GSkdyd2RvVGRrcTltcmNcL0RlSG12TkE0cVZydm5RZHRtTDhXem45R3RTdUg0VmVyIiwibWFjIjoiMWNlZWY4NjRmYWU0YWU4N2NhNDI5N2U1ZGViNjE2OWI4YjIxYjA0YzMzZTMzMDk5ZDE0YzMzODI2YmVjZWQ3OCJ9; star_session=eyJpdiI6IklMcjBhWFhtVHdpM0J1ZVFOWUFRTFE9PSIsInZhbHVlIjoiaGhVTnl1UlwvN2hFc2ZqamdEZ2d1UlZCQll5Mng4OExNekFqTGZjTno0cWNmVWlUSXBTSVY5NnFmXC93WkFOSlhxIiwibWFjIjoiMDI3ZmFkY2Y0MDRkOTA5MjMzMmQyMzM1ZGEyNDczNmI4ZjIxNDU5MTUyNjc0ZmJhOWZiNzFhZWZkNWM0YzA1MCJ9"
+					},
+					{
+						"key": "Origin",
+						"value": "http://localhost:4200"
+					},
+					{
+						"key": "Referer",
+						"value": "http://localhost:4200/"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Warehouse-Id",
+						"value": "4762"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\".Not/A)Brand\";v=\"99\", \"Google Chrome\";v=\"103\", \"Chromium\";v=\"103\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"api",
+						"products"
+					]
+				},
+				"description": "get all products"
+			},
+			"response": []
+		},
+		{
+			"name": "Create/Store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "LG",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "450888",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "product_type",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "created_by",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8092/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Motorola",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "4899",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "product_type",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8092/api/products/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"api",
+						"products",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Motorola",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "4600",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "product_type",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "created_by",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8092/api/products/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"api",
+						"products",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_method",
+							"value": "DELETE",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8092/api/products/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"api",
+						"products",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Changelog",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/api/get-log",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"api",
+						"get-log"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
