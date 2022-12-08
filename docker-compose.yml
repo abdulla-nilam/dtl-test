@@ -1,0 +1,110 @@
+version: '3'
+services:
+
+  ## -----------------------------------------------
+  ##           MySql database
+  ## -----------------------------------------------
+  dtl_db:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    image: mysql_image
+    restart: always
+    container_name: dtl_db
+    volumes:
+      - dtl_db:/var/lib/mysql
+      - ./mysql:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    deploy:
+      mode: global
+    ports:
+      - "33091:3306"
+    networks:
+      - app-network
+
+  ## -----------------------------------------------
+  ##           MongoDB
+  ## -----------------------------------------------
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb:/data/db
+    logging:
+      driver: none
+    networks:
+      - app-network
+
+    ## -----------------------------------------------
+    ##           Nginx Service
+    ## -----------------------------------------------
+  dtl_webserver:
+    image: nginx:alpine
+    container_name: dtl_webserver
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www/
+    env_file:
+      - .env
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - "8092:80"
+    #      - "444:443"
+    depends_on:
+      - dtl_app
+    networks:
+      - app-network
+
+  ## -----------------------------------------------
+  ##           php service
+  ## -----------------------------------------------
+  dtl_app:
+    build:
+      context: ./dtl_app
+      dockerfile: Dockerfile
+    image: php_image
+    working_dir: /var/www/dtl_app
+    container_name: dtl_app
+    restart: unless-stopped
+    tty: true
+    env_file:
+      - .env
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: ${MYSQL_HOST}
+      DB_DATABASE: ${MYSQL_DATABASE}
+      DB_USERNAME: ${MYSQL_USERNAME}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      MONGO_HOST: ${MONGO_HOST}
+      MONGO_PORT: ${MONGO_PORT}
+      MONGO_DATABASE: ${MONGO_DATABASE}
+      MONGO_USERNAME: ${MONGO_USERNAME}
+      MONGO_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - ./dtl_app:/var/www/dtl_app
+      - ./config/local.ini:/usr/local/etc/php/conf.d/local.ini
+    depends_on:
+      - dtl_db
+      - mongodb
+    networks:
+      - app-network
+
+#Volumes
+volumes:
+  dtl_db:
+  mongodb:
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
